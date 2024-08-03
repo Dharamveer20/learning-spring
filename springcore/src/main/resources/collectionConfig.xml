@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans.xsd
+    http://www.springframework.org/schema/context
+    http://www.springframework.org/schema/context/spring-context.xsd">
+
+    <bean class="com.springcore.setterinjection.Emp" name="emp">
+        <property name="name" value="Gano"/>
+
+<!-- For List (note set ka bhi same bss list hata ke write set-->
+        <property name="phoneNo">
+            <list>
+                <value>9819762521</value>
+                <value>8819762521</value>
+<!--We can also store null as mentioned below-->
+                <null/>
+            </list>
+        </property>
+
+        <!--        For Set-->
+        <property name="addresses">
+            <set>
+                <value>Ranchi</value>
+                <value>Manchi</value>
+                <null/>
+                <value>Banchi</value>
+            </set>
+        </property>
+
+<!-- For Map-->
+        <property name="courses">
+            <map>
+                <entry key="java" value="2 months"/>
+                <entry key = "C++" value="3 months"/>
+            </map>
+        </property>
+    </bean>
+</beans>

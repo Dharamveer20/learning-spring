@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans.xsd
+    http://www.springframework.org/schema/context
+    http://www.springframework.org/schema/context/spring-context.xsd">
+
+<!-- class tag: complete path of our class-->
+<!-- name tag: name of the bean-->
+    <bean class="com.springcore.setterinjection.Student" name="student1">
+<!-- property tag se Setter Injection hota hai -->
+<!--name tag me we specify variable/field ka naam of that class. value tag me value which we wanna assign it.-->
+        <property name="studentId">
+            <value>1</value>
+        </property>
+        <property name="studentName">
+            <value>Pano meri</value>
+        </property>
+        <property name="studentAddress">
+            <value>Mumbai</value>
+        </property>
+    </bean>
+<!--Another simplier way(also known as value as attribute)-->
+    <bean class="com.springcore.setterinjection.Student" name="student2">
+        <property name="studentId" value="2"/>
+        <property name="studentName" value="Bano Meri"/>
+        <property name="studentAddress" value="Kolkata"/>
+    </bean>
+<!--More simpiler way using p schema-->
+<!--    <bean class="com.springcore" name="student2" p:studentId="3" p:studentName="Tano meri" p:studentAddress="Ranchi"/>-->
+</beans>

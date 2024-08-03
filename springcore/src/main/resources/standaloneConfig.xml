@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:c="http://www.springframework.org/schema/c"
+       xmlns:util="http://www.springframework.org/schema/util"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans.xsd
+    http://www.springframework.org/schema/context
+    http://www.springframework.org/schema/context/spring-context.xsd
+    http://www.springframework.org/schema/util
+    http://www.springframework.org/schema/util/spring-util.xsd">
+
+<!-- Creating Standalone Collection   -->
+<!--  Make sure to specify the exact collection type in list-class tag -->
+<!--  id tag: name given to the standalone collection  -->
+    <util:list list-class="java.util.LinkedList" id="frieSndsName">
+        <value>Aano</value>
+        <value>Bano</value>
+        <value>Cano</value>
+    </util:list>
+<!--  Now we can use this list anywhere in the list anywhere in this xml file.-->
+
+<!--  this for map (samjh gaya hoga kaise work krta hai util tag)  -->
+    <util:map map-class="java.util.TreeMap" id="friendsAge">
+        <entry key="Aano" value="20"/>
+        <entry key="Bano" value="19"/>
+    </util:map>
+
+    <bean class="com.springcore.standalonecollections.PersonalInfo" name="person1">
+<!-- Now we will refer to the standalone collections instead of writing inside this mean       -->
+        <property name="friends" ref="friendsName"/>
+        <property name="age" ref="friendsAge"/>
+<!-- reference type jaise inject hota hai vaise hi standalone collection bhi inject krte hai      -->
+    </bean>
+</beans>

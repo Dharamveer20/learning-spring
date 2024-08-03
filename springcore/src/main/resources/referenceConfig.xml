@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans.xsd
+    http://www.springframework.org/schema/context
+    http://www.springframework.org/schema/context/spring-context.xsd">
+
+    <bean name="bref" class="com.springcore.setterinjection.B">
+        <property name="y" value="5"/>
+    </bean>
+
+    <bean name="aref" class="com.springcore.setterinjection.A">
+        <property name="x" value="12"/>
+        <property name="ob">
+            <ref bean="bref"/>
+        </property>
+<!--  Or Instead we could have used value as attribute   -->
+        <property name="ob" ref = "bref"/>
+    </bean>
+
+<!--using p schema    -->
+<!--    <bean name="aref" class="com.springcore.setterinjection.A" p:x="134" p:ob-ref="bref"/>-->
+
+</beans>

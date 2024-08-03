@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:c="http://www.springframework.org/schema/c"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans.xsd
+    http://www.springframework.org/schema/context
+    http://www.springframework.org/schema/context/spring-context.xsd">
+
+<!--    <bean name="certificateRef" class="com.springcore.constructorinjection.Certificate">-->
+<!--&lt;!&ndash; First constructor-arg tag will initialize first para of the constructor, second waala second para ko and so on     &ndash;&gt;-->
+<!--        <constructor-arg>-->
+<!--            <value>5 Gold</value>-->
+<!--        </constructor-arg>-->
+
+<!--&lt;!&ndash; Or we simply could have used value as attribute       &ndash;&gt;-->
+<!--        <constructor-arg value="5 gold"/>-->
+<!--    </bean>-->
+
+<!--    Or we could have used c schema-->
+    <bean name="certificateRef" class="com.springcore.constructorinjection.Certificate" c:a="5 gold"/>
+
+    <bean class="com.springcore.constructorinjection.Person" name="pers">
+<!-- for primitive type      -->
+        <constructor-arg value="Zano"/>
+        <constructor-arg  value="178"/>
+
+<!--  for collectoion      -->
+        <constructor-arg>
+            <list>
+                <value>5</value>
+                <value>34</value>
+                <value>25</value>
+            </list>
+        </constructor-arg>
+
+<!--   for reference     -->
+        <constructor-arg  ref="certificateRef"/>
+    </bean>
+</beans>
