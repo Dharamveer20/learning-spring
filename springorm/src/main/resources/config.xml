@@ -1,0 +1,47 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans.xsd
+    http://www.springframework.org/schema/context
+    http://www.springframework.org/schema/context/spring-context.xsd">
+
+    <!--  Object of DriverManagerDataSource  -->
+    <bean class="org.springframework.jdbc.datasource.DriverManagerDataSource" name="ds">
+        <property name="driverClassName" value="com.mysql.cj.jdbc.Driver"/>
+        <property name="url" value="jdbc:mysql://localhost:3306/springjdbc"/>
+        <property name="username" value="root"/>
+        <property name="password" value="root"/>
+    </bean>
+
+<!--    Implementation class of SessionFactory requires 3 things-->
+    <bean class="org.springframework.orm.hibernate5.LocalSessionFactoryBean" name="factory">
+<!--        1. Data Source object-->
+        <property name="dataSource" ref="ds"/>
+
+<!--        2. hibernate properties-->
+        <property name="hibernateProperties">
+            <props>
+                <prop key="haibernet.dialect">org.hibernate.dialect.MySQLDialect</prop>
+                <prop key="hibernate.show_sql">true</prop>
+                <prop key="hibernate.hbm2ddl.auto">update</prop>
+            </props>
+        </property>
+<!--        3. mapping resources (classes jo database se contact karenge)-->
+        <property name="mappingResources">
+            <list>
+                <value>com.spring.orm.entities.Student</value>
+            </list>
+        </property>
+    </bean>
+
+    <!--  Object of HibernateTemplate which needs object of SessionFactory Interface-->
+    <bean name="hibernateTemplate" class="org.springframework.orm.hibernate5.HibernateTemplate">
+        <property name="sessionFactory" ref="factory"/>
+    </bean>
+
+    <bean class="com.spring.orm.dao.StudentDaoImpl" name="studentDao">
+        <property name="hibernateTemplate" ref="hibernateTemplate"/>
+    </bean>
+</beans>
