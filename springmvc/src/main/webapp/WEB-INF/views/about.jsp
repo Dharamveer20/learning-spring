@@ -5,7 +5,7 @@
     <title>Home Page</title>
 </head>
 <body>
-    <h1>Welcome to the Main Home Page!</h1>
+    <h1>Welcome to the Aboutttt Page!</h1>
     <h1>Called by Home controller</h1>
     <h1>url home</h1>
 

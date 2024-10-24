@@ -6,7 +6,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
 @Entity // makes the class ready for database operations through ORM
-@Table(name="student_details") // table the name of the table in the database jaha class ke fields map honge.
+@Table(name="student_details") // name of the table in the database jaha class ke fields map honge.
 public class Student {
     @Id // Primary Key
     @Column(name="id") // column name
@@ -16,6 +16,7 @@ public class Student {
     @Column(name="city")
     private String studentCity;
 
+    public Student(){};
     public Student(int studentId, String studentName, String studentCity) {
         this.studentId = studentId;
         this.studentName = studentName;
@@ -54,4 +55,5 @@ public class Student {
                 ", studentCity='" + studentCity + '\'' +
                 '}';
     }
+
 }

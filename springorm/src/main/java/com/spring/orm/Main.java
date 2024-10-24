@@ -10,9 +10,29 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Main {
     public static void main(String[] args) {
-        ApplicationContext context = new ClassathXmlApplicationContext("config.xml");
-        StudentDao studentDao = context.getBean("studentDao",StudentDaoImpl.class);
-        Student student = new Student(1,"Jano", "Hatia");
-        System.out.println(studentDao.insert(student));
+        try {
+            ApplicationContext context = new ClassPathXmlApplicationContext("config.xml");
+            StudentDao studentDao = context.getBean("studentDao", StudentDaoImpl.class);
+
+//          Insertion
+//            Student student = new Student(3, "Lano", "Vatia");
+//            System.out.println(studentDao.insert(student));
+
+            // Reading single column
+//            System.out.println(studentDao.getStudentById(2));
+
+//            Reading all columns
+            System.out.println(studentDao.getAllStudents());
+
+            // Deleting a column
+//            studentDao.deleteStudent(2);
+
+//            Updating a column
+//            studentDao.updateStudent(new Student (3,"Mano","Dhanbad"));
+
+
+        } catch(Exception e){
+            System.out.println(e);
+        }
     }
 }
